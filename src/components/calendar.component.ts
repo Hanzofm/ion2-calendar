@@ -61,6 +61,7 @@ export const ION_CAL_VALUE_ACCESSOR: Provider = {
                           [(ngModel)]="_calendarMonthValue"
                           [month]="monthOpt"
                           [readonly]="readonly"
+                          [swipe]="swipe"
                           (change)="onChanged($event)"
                           (swipe)="swipeEvent($event)"
                           (select)="select.emit($event)"
