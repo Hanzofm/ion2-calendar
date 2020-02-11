@@ -112,6 +112,8 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   type: CalendarComponentTypeProperty = 'string';
   @Input()
   readonly = false;
+  @Input()
+  swipe = true;
   @Output()
   change: EventEmitter<CalendarComponentPayloadTypes> = new EventEmitter();
   @Output()
@@ -267,12 +269,14 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   }
 
   swipeEvent($event: any): void {
+if(this.swipe){
     const isNext = $event.deltaX < 0;
     if (isNext && this.canNext()) {
       this.nextMonth();
     } else if (!isNext && this.canBack()) {
       this.backMonth();
     }
+}
   }
 
   _onChanged: Function = () => {};
