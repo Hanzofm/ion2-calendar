@@ -77,6 +77,7 @@ export class MonthComponent implements ControlValueAccessor, AfterViewInit {
   @Input() isSaveHistory: boolean;
   @Input() id: any;
   @Input() readonly = false;
+  @Input() canSwipe = false;
   @Input() color: string = defaults.COLOR;
 
   @Output() onChange: EventEmitter<CalendarDay[]> = new EventEmitter();
