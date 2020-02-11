@@ -258,14 +258,14 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   }
 
   swipeEvent($event: any): void {
-    if(this.swipe){
+   /* if(this.swipe){
         const isNext = $event.deltaX < 0;
         if (isNext && this.canNext()) {
           this.nextMonth();
         } else if (!isNext && this.canBack()) {
           this.backMonth()
         }    
-    }
+    }*/
   }
 
   _onChanged: Function = () => {
