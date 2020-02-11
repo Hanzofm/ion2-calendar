@@ -83,6 +83,8 @@ export class MonthComponent implements ControlValueAccessor, AfterViewInit {
   @Input()
   readonly = false;
   @Input()
+  canSwipe = false;
+  @Input()
   color: string = defaults.COLOR;
 
   @Output()
