@@ -64,6 +64,7 @@ export const ION_CAL_VALUE_ACCESSOR: Provider = {
                           [(ngModel)]="_calendarMonthValue"
                           [month]="monthOpt"
                           [readonly]="readonly"
+                          [canSwipe]="canSwipe"
                           (onChange)="onChanged($event)"
                           (swipe)="swipeEvent($event)"
                           (onSelect)="onSelect.emit($event)"
@@ -113,6 +114,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   @Input() format: string = defaults.DATE_FORMAT;
   @Input() type: CalendarComponentTypeProperty = 'string';
   @Input() readonly = false;
+  @Input() canSwipe = false;
   @Output() onChange: EventEmitter<CalendarComponentPayloadTypes> = new EventEmitter();
   @Output() monthChange: EventEmitter<CalendarComponentMonthChange> = new EventEmitter();
   @Output() onSelect: EventEmitter<CalendarDay> = new EventEmitter();
@@ -256,11 +258,13 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   }
 
   swipeEvent($event: any): void {
-    const isNext = $event.deltaX < 0;
-    if (isNext && this.canNext()) {
-      this.nextMonth();
-    } else if (!isNext && this.canBack()) {
-      this.backMonth()
+    if(this.swipe){
+        const isNext = $event.deltaX < 0;
+        if (isNext && this.canNext()) {
+          this.nextMonth();
+        } else if (!isNext && this.canBack()) {
+          this.backMonth()
+        }    
     }
   }
 
